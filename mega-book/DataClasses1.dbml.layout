@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="179ff881-c94f-4969-926f-8f4aaff867f2" absoluteBounds="3.625, 2.25, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/DataClasses1DataContext/Book" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe0a3915-42c4-426d-b95f-ed62d6757bd4" absoluteBounds="3.64, 2.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6c0392b0-e410-48ad-938c-2e06b9205cdf" absoluteBounds="0.5, 2.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClasses1DataContext/review" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3eb511e0-2d80-4595-b6d4-b71265d58407" absoluteBounds="0.51500000000000012, 2.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.625 : 3.79068195280482); (2.5 : 3.79068195280482)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Caller">
+      <AssociationMoniker Name="/DataClasses1DataContext/Book/Book_review" />
+      <nodes>
+        <classShapeMoniker Id="179ff881-c94f-4969-926f-8f4aaff867f2" />
+        <classShapeMoniker Id="6c0392b0-e410-48ad-938c-2e06b9205cdf" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
