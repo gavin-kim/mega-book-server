@@ -20,8 +20,9 @@ namespace mega_book
     using System.Linq.Expressions;
     using System.ComponentModel;
     using System;
+    using System.Globalization;
     using Newtonsoft.Json;
-    using System.Runtime.Serialization;
+
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="mega-book")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
@@ -33,9 +34,9 @@ namespace mega_book
     partial void InsertBook(Book instance);
     partial void UpdateBook(Book instance);
     partial void DeleteBook(Book instance);
-    partial void Insertreview(review instance);
-    partial void Updatereview(review instance);
-    partial void Deletereview(review instance);
+    partial void InsertReview(Review instance);
+    partial void UpdateReview(Review instance);
+    partial void DeleteReview(Review instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -76,11 +77,11 @@ namespace mega_book
 			}
 		}
 		
-		public System.Data.Linq.Table<review> reviews
+		public System.Data.Linq.Table<Review> Reviews
 		{
 			get
 			{
-				return this.GetTable<review>();
+				return this.GetTable<Review>();
 			}
 		}
 	}
@@ -101,7 +102,7 @@ namespace mega_book
 		
 		private string _isbn;
 		
-		private EntitySet<review> _reviews;
+		private EntitySet<Review> _Reviews;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -121,7 +122,7 @@ namespace mega_book
 		
 		public Book()
 		{
-			this._reviews = new EntitySet<review>(new Action<review>(this.attach_reviews), new Action<review>(this.detach_reviews));
+			this._Reviews = new EntitySet<Review>(new Action<Review>(this.attach_Reviews), new Action<Review>(this.detach_Reviews));
 			OnCreated();
 		}
 		
@@ -225,16 +226,16 @@ namespace mega_book
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_review", Storage="_reviews", ThisKey="Id", OtherKey="bookId")]
-		public EntitySet<review> reviews
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Review", Storage="_Reviews", ThisKey="Id", OtherKey="bookId")]
+		public EntitySet<Review> Reviews
 		{
 			get
 			{
-				return this._reviews;
+				return this._Reviews;
 			}
 			set
 			{
-				this._reviews.Assign(value);
+				this._Reviews.Assign(value);
 			}
 		}
 		
@@ -258,21 +259,21 @@ namespace mega_book
 			}
 		}
 		
-		private void attach_reviews(review entity)
+		private void attach_Reviews(Review entity)
 		{
 			this.SendPropertyChanging();
 			entity.Book = this;
 		}
 		
-		private void detach_reviews(review entity)
+		private void detach_Reviews(Review entity)
 		{
 			this.SendPropertyChanging();
 			entity.Book = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.review")]
-	public partial class review : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Review")]
+	public partial class Review : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -281,16 +282,15 @@ namespace mega_book
 		
 		private string _reviewerName;
 		
-		private System.DateTime _reviewerDate;
+		private System.DateTime _reviewDate;
 		
 		private string _content;
 		
 		private int _rating;
 		
 		private int _bookId;
-
-        [JsonIgnore]
-        private EntityRef<Book> _Book;
+		
+		private EntityRef<Book> _Book;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -300,8 +300,8 @@ namespace mega_book
     partial void OnIdChanged();
     partial void OnreviewerNameChanging(string value);
     partial void OnreviewerNameChanged();
-    partial void OnreviewerDateChanging(System.DateTime value);
-    partial void OnreviewerDateChanged();
+    partial void OnreviewDateChanging(System.DateTime value);
+    partial void OnreviewDateChanged();
     partial void OncontentChanging(string value);
     partial void OncontentChanged();
     partial void OnratingChanging(int value);
@@ -310,7 +310,7 @@ namespace mega_book
     partial void OnbookIdChanged();
     #endregion
 		
-		public review()
+		public Review()
 		{
 			this._Book = default(EntityRef<Book>);
 			OnCreated();
@@ -356,22 +356,22 @@ namespace mega_book
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reviewerDate", DbType="Date NOT NULL")]
-		public System.DateTime reviewerDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reviewDate", DbType="Date NOT NULL")]
+		public System.DateTime reviewDate
 		{
 			get
 			{
-				return this._reviewerDate;
+				return this._reviewDate;
 			}
 			set
 			{
-				if ((this._reviewerDate != value))
+				if ((this._reviewDate != value))
 				{
-					this.OnreviewerDateChanging(value);
+					this.OnreviewDateChanging(value);
 					this.SendPropertyChanging();
-					this._reviewerDate = value;
-					this.SendPropertyChanged("reviewerDate");
-					this.OnreviewerDateChanged();
+					this._reviewDate = value;
+					this.SendPropertyChanged("reviewDate");
+					this.OnreviewDateChanged();
 				}
 			}
 		}
@@ -441,7 +441,7 @@ namespace mega_book
 		}
 		
         [JsonIgnore]
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_review", Storage="_Book", ThisKey="bookId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_Review", Storage="_Book", ThisKey="bookId", OtherKey="Id", IsForeignKey=true)]
 		public Book Book
 		{
 			get
@@ -458,12 +458,12 @@ namespace mega_book
 					if ((previousValue != null))
 					{
 						this._Book.Entity = null;
-						previousValue.reviews.Remove(this);
+						previousValue.Reviews.Remove(this);
 					}
 					this._Book.Entity = value;
 					if ((value != null))
 					{
-						value.reviews.Add(this);
+						value.Reviews.Add(this);
 						this._bookId = value.Id;
 					}
 					else
@@ -474,8 +474,13 @@ namespace mega_book
 				}
 			}
 		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
+
+        public override string ToString()
+        {
+            return $"ID: {_Id}, ReviewerName: {_reviewerName}, ReviewDate: {_reviewDate}, Rating: {_rating}, BookId: {_bookId}";
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
 		
@@ -495,5 +500,31 @@ namespace mega_book
 			}
 		}
 	}
+
+    //public class ReviewConverter : TypeConverter
+    //{
+    //    public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+    //    {
+    //        if (sourceType == typeof(string))
+    //            return true;
+
+    //        return base.CanConvertFrom(context, sourceType);
+    //    }
+
+    //    public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+    //    {
+    //        if (value is string)
+    //        {
+    //            Review review;
+
+    //            if (Review.TryParse((string)value, out review))
+    //            {
+    //                return review;
+    //            }
+    //        }
+    //        return base.ConvertFrom(context, culture, value);
+    //    }
+    //}
+
 }
 #pragma warning restore 1591

@@ -19,5 +19,11 @@ namespace mega_book
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        
+        protected void Session_Start()
+        {
+            System.Diagnostics.Debug.WriteLine("Session Start");
+        }
+
     }
 }

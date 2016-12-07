@@ -24,29 +24,55 @@ namespace mega_book.Controllers
         }
 
         // GET: api/Book/5
-        public Book Get(int id)
+        public object Get(int id)
         {
-            return db.Books.Where(book => book.Id == id).Single();
+            // SingleOrDefault return Default(null) when there is no item.
+            Book book = db.Books.Where(b => b.Id == id).SingleOrDefault();
+
+            if (book == null)
+                return NotFound();
+
+            return book;
         }
 
         // POST: api/Book
-        public void Post([FromBody]Book book)
+        public int Post([FromBody]Book book)
         {
-            System.Diagnostics.Debug.WriteLine(book.Id);
-            System.Diagnostics.Debug.WriteLine(book.name);
+            if (db.Books.Any(v => v.Id == book.Id))
+                return 0;
+
             db.Books.InsertOnSubmit(book);
             db.SubmitChanges();
+            return book.Id;
         }
 
         // PUT: api/Book/5
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]Book book)
         {
+            Book original = db.Books.Where(b => b.Id == book.Id).SingleOrDefault();
+
+            if (original == null || book.isbn == null || book.name == null ||
+                book.releaseDate == null || book.content == null)
+                return;
+
+            original.isbn = book.isbn;
+            original.name = book.name;
+            original.releaseDate = book.releaseDate;
+            original.content = book.content;
+
+            db.SubmitChanges();
         }
 
         // DELETE: api/Book/5
         public void Delete(int id)
         {
-            
+            Book book = db.Books.Where(b => b.Id == id).SingleOrDefault();
+
+            if (book == null)
+                return;
+
+            db.Books.DeleteOnSubmit(book);
+            db.SubmitChanges();
         }
     }
 }

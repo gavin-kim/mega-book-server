@@ -7,18 +7,18 @@
       <Column Name="releaseDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="content" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="isbn" Type="System.String" DbType="Char(13) NOT NULL" CanBeNull="false" />
-      <Association Name="Book_review" Member="reviews" ThisKey="Id" OtherKey="bookId" Type="review" />
+      <Association Name="Book_Review" Member="Reviews" ThisKey="Id" OtherKey="bookId" Type="Review" />
     </Type>
   </Table>
-  <Table Name="dbo.review" Member="reviews">
-    <Type Name="review">
+  <Table Name="dbo.Review" Member="Reviews">
+    <Type Name="Review">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="reviewerName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="reviewerDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="reviewDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="content" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="rating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="bookId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Book_review" Member="Book" ThisKey="bookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
+      <Association Name="Book_Review" Member="Book" ThisKey="bookId" OtherKey="Id" Type="Book" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

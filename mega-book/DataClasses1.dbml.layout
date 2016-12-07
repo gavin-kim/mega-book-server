@@ -8,17 +8,17 @@
         <elementListCompartment Id="fe0a3915-42c4-426d-b95f-ed62d6757bd4" absoluteBounds="3.64, 2.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6c0392b0-e410-48ad-938c-2e06b9205cdf" absoluteBounds="0.5, 2.25, 2, 1.9631982421875">
-      <DataClassMoniker Name="/DataClasses1DataContext/review" />
+    <classShape Id="2bf1f659-4012-4616-b27a-dec31295efa1" absoluteBounds="0.875, 2.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClasses1DataContext/Review" />
       <nestedChildShapes>
-        <elementListCompartment Id="3eb511e0-2d80-4595-b6d4-b71265d58407" absoluteBounds="0.51500000000000012, 2.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5d7ac945-692f-49ad-9949-4bc1300fb1db" absoluteBounds="0.88999999999999968, 2.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.625 : 3.79068195280482); (2.5 : 3.79068195280482)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Caller">
-      <AssociationMoniker Name="/DataClasses1DataContext/Book/Book_review" />
+    <associationConnector edgePoints="[(3.625 : 3.13544840494792); (2.875 : 3.13544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/Book/Book_Review" />
       <nodes>
         <classShapeMoniker Id="179ff881-c94f-4969-926f-8f4aaff867f2" />
-        <classShapeMoniker Id="6c0392b0-e410-48ad-938c-2e06b9205cdf" />
+        <classShapeMoniker Id="2bf1f659-4012-4616-b27a-dec31295efa1" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
