@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-mega-book-20161205024610.mdf;Initial Catalog=aspnet-mega-book-20161205024610;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Kwan\\Desktop\\mega-book\\mega-book\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="mega_bookConnectionString-Web.config Connection String" description="mega_bookConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=mega-book.database.windows.net;Initial Catalog=mega-book;User ID=kyk0704;Password=RLAdbsrhks74*$;Connect Timeout=60" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Kwan\\Desktop\\mega-book\\mega-book\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='mega_bookConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

@@ -178,3 +178,6 @@ C:\Users\Kwan\Desktop\mega-book\mega-book\bin\System.Web.Http.Owin.xml
 C:\Users\Kwan\Desktop\mega-book\mega-book\obj\Debug\mega-book.csprojResolveAssemblyReference.cache
 C:\Users\Kwan\Desktop\mega-book\mega-book\obj\Debug\mega-book.dll
 C:\Users\Kwan\Desktop\mega-book\mega-book\obj\Debug\mega-book.pdb
+C:\Users\Kwan\Desktop\mega-book\mega-book\bin\System.Web.Cors.dll
+C:\Users\Kwan\Desktop\mega-book\mega-book\bin\System.Web.Http.Cors.dll
+C:\Users\Kwan\Desktop\mega-book\mega-book\bin\System.Web.Http.Cors.xml
